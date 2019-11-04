@@ -10,21 +10,19 @@
     print_r($_POST);
     printf("name: %s\n email: %s \npassword: %s ", $name, $email, $password);
     
-    $sql = $conn->prepare('SELECT COUNT(*) FROM users WHERE email=?');
+    $sql = $conn->prepare('SELECT `password` FROM users WHERE email=?');
     $sql->execute([$email]);
     $res = $sql->fetchColumn();
     printf($res);
-    if ($res > 0) {
-      echo ("TAKEN B*TCH");
+    if ($res == $password) {
+      echo ("Well, well, well... Welcome back");
     }
+    else echo ("No luck");
 
-    else {
-        $sql = $conn->prepare('INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password);');
-        $sql->bindParam(':name', $name);
-        $sql->bindParam(':email', $email);
-        $sql->bindParam(':password', $password);
-        $sql->execute();
-      }    
+    // else {
+    //     $sql = $conn->prepare('INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password);');
+    //     $sql->execute();
+    //   }    
     //   add to DB
   }
 ?>
