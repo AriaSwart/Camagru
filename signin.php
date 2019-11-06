@@ -4,7 +4,6 @@
 
   session_start();
   if (isset($_POST)) {
-    $name = $_POST['name'];
     $email = $_POST['email'];
     $password = hash('md5', $_POST['password']);
     $sql = $conn->prepare('SELECT `password` FROM users WHERE email=?');
@@ -13,7 +12,10 @@
     $res = $sql->fetchColumn();
     print_r($res);
     if ($res == $password) {
-      echo ("Well, well, welcome back");
+      $sql = $conn->prepare('SELECT `name` FROM users WHERE email=?');
+      $sql->execute([$email]);
+      $res = $sql->fetchColumn();
+      echo ("Welcome back, $res");
     }
     else echo ("Email and password not found");
   }

@@ -17,7 +17,6 @@
     if ($res > 0) {
       echo ("TAKEN B*TCH");
     }
-
     else {
         $sql = $conn->prepare('INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password);');
         $sql->bindParam(':name', $name);
