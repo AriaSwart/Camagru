@@ -11,8 +11,6 @@
 </form>
 
 <form method="POST" action="signin.php">
-    <label for="name">Name: </label>
-    <input type="text" name="name" placeholder="Name" required/>
     <label for="email">Email: </label>
     <input type="email" name="email" placeholder="Email" required/>
     <!-- Hash Password algo=md5-->
