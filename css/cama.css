@@ -1,3 +1,9 @@
-#canvas {
+/* #canvas {
     display: none;
+} */
+
+.top-container {
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
 }
