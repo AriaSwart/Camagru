@@ -24,7 +24,7 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
            height = video.videoHeight / (video.videoWidth / width);
            
            video.setAttribute('width', width);
-           video.setAttribute('height ', height);
+           video.setAttribute('height', height);
            canvas.setAttribute('width', width);
            canvas.setAttribute('height', height);
            
@@ -33,10 +33,17 @@ navigator.mediaDevices.getUserMedia({video: true, audio: false})
     }, false);
     
 photoButton.addEventListener('click', function(e) {
-    takePicture();
-    
+    let image = takePicture();
+    sendimage_server(image);
     e.preventDefault();
 }, false);
+
+function sendimage_server(image) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "feed.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("image=" + encodeURIComponent(image.replace("data:image/png;base64,", "")));
+}
 
 function takePicture() {
     const context = canvas.getContext('2d');
@@ -45,9 +52,8 @@ function takePicture() {
         canvas.height = height;
         context.drawImage(video, 0, 0, width, height);
         const imgUrl = canvas.toDataURL('image/png');
-        console.log(imgUrl);
         const img = document.createElement('img');
         img.setAttribute('src', imgUrl);
-        photos.appendChild('img');
+        return (imgUrl);
     }
 }
