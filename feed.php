@@ -1,10 +1,9 @@
 <?php
 
-    static $image;
-    
-    if (!$image) {
-        $image = 0;
-    }
+include 'data.php';
+
+//retrieve ID from database    
+$image = 0;
 
     if (isset($_POST['image'])) {
         $file = "image".$image.".png";
