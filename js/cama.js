@@ -40,7 +40,7 @@ photoButton.addEventListener('click', function(e) {
 
 function sendimage_server(image) {
     var xhttp = new XMLHttpRequest();
-    xhttp.open("POST", "feed.php", true);
+    xhttp.open("POST", "saveimage.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("image=" + encodeURIComponent(image.replace("data:image/png;base64,", "")));
 }

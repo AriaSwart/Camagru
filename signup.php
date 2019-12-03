@@ -34,7 +34,6 @@
       {
           echo "Error: " . $e->getMessage();
       }
-        
-      }    
+    }    
   }
 ?>

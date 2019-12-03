@@ -2,13 +2,13 @@
 
 include 'data.php';
 
-//retrieve ID from database    
-$image = 0;
+session_start();
+if ($_SESSION == NULL)
+    header ("location:/Camagru/login.php");
+$name = $_SESSION['name'];
 
-    if (isset($_POST['image'])) {
-        $file = "image".$image.".png";
-        file_put_contents($file, base64_decode($_POST['image']));
-        $image++;
-    }
+echo ("$name");
 
 ?>
+
+<a href="signout.php">Logout</a>
