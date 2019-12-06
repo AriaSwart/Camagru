@@ -26,9 +26,9 @@
 
         $sql = $conn->prepare('CREATE TABLE IF NOT EXISTS `images` (
             `id` INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
-            `owner` INT NOT NULL,
+            `owner` INT,
             FOREIGN KEY (`owner`) REFERENCES `users`(`id`),
-            `image` VARCHAR(255) NOT NULL,
+            `image` VARCHAR(255),
             `upload` DATE)');
         $sql->execute();
         

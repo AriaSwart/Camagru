@@ -10,12 +10,9 @@ $image = 0;
     if (isset($_POST['image'])) {
         //create new image entry
         try{
-            $sql = $conn->prepare('INSERT INTO `images` (`name`, `email`, `password`, `verification`, `verified`) VALUES (:name, :email, :password, :verification, :verified)');
-            $sql->bindParam(':name', $name);
-            $sql->bindParam(':email', $email);
-            $sql->bindParam(':password', $password);
-            $sql->bindParam(':verification', $link);
-            $sql->bindParam(':verified', $veri);
+            $sql = $conn->prepare('INSERT INTO `images` (`owner`, `upload`) VALUES (:owner, :upload)');
+            $sql->bindParam(':owner', $_SESSION['ID']);
+            $sql->bindParam(':upload', DATE);
             $sql->execute();
         } 
         catch(PDOException $e)

@@ -39,7 +39,6 @@ $name = $_SESSION['name'];
     <div class="bottom-container">
         <div id="photos"></div>
     </div>
-    
     <script src="js/cama.js"></script>
 </body>
 </html>
